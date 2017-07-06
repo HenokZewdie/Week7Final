@@ -16,9 +16,9 @@
                 <th>Company Name</th>
              </tr>
 
-            <div th:each="loopin : ${searchCompany}">
+            <div th:each="loopin : ${employerSeeker}">
                 <tr>
-                    <td><p th:text = "${loopin.company}"></p></td>
+                    <td><p th:text = "${loopin.employer}"></p></td>
 
 
                     <!--<td th:text = "${#dates.format(mylink.date, 'MMM-dd-yyyy')}"></td>  #dates.format(sprint.releaseDate, 'dd-MMM-yyyy')-->

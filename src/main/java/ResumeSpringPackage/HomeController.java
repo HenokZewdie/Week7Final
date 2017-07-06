@@ -112,6 +112,20 @@ public class HomeController {
         model.addAttribute("skill", new Skill());
         return "skill";
     }
+    @RequestMapping(value = "displayAll", method = RequestMethod.GET)
+    public String DisplayAll( Model model, User user){
+
+
+        user = userRepository.findByEmail(emailSession);
+        Iterable<Education> Educvalues = educationRepository.findByEmail(emailSession);
+        Iterable<Experience> Expvalues = experienceRepository.findByEmail(emailSession);
+        Iterable<Skill> Skillvalues = skillRepository.findByEmail(emailSession);
+        model.addAttribute("values", user);
+        model.addAttribute("Educvalues", Educvalues);
+        model.addAttribute("Expvalues", Expvalues);
+        model.addAttribute("Skillvalues", Skillvalues);
+        return "displayAll";
+    }
 
     @RequestMapping(value="/vacancy", method = RequestMethod.GET)
     public String jobPostGet(Model model){
@@ -137,13 +151,25 @@ public class HomeController {
         System.out.println(searchtitle);
         Iterable<Job> iterateValue = jobRepository.findByTitle(searchtitle);
         model.addAttribute("newValue", iterateValue);
-        Iterator<Job> test = iterateValue.iterator();
-        while(test.hasNext()){
-            System.out.println(test.next().getEmployer());
-        }
         return "display";
     }
-
+    @RequestMapping(value = "/employerSeeker", method = RequestMethod.GET)
+    public String recruiterSeeker(Model model){
+        model.addAttribute("job",new Job());
+        return "employerSeeker";
+    }
+    @RequestMapping(value = "/employerSeeker", method = RequestMethod.POST)
+    public String recruiterSeekerPost(@ModelAttribute Job job, Model model){
+        String searchtitle = job.getEmployer();
+        System.out.println(searchtitle);
+        Iterable<Job> iterateValue = jobRepository.findByEmployer(searchtitle);
+        model.addAttribute("employerSeeker", iterateValue);
+        /*Iterator<Job> test = iterateValue.iterator();
+        while(test.hasNext()){
+            System.out.println(test.next().getEmployer());
+        }*/
+        return "display";
+    }
 
     public UserValidator getUserValidator() {
         return userValidator;

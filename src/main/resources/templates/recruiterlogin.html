@@ -7,13 +7,17 @@
 <body>
 <div class="container">
     <div class="jumbotron">
-        <nav class="navbar navbar-default" th:replace="base::navi"></nav>
+        <nav class="navbar navbar-default" th:replace="base::nav2"></nav>
         <div class="container">
             <h3>Only Visible for Recruiters</h3>
-            <p><h5>Another Big conflict
-            This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.
-            This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</h5></p>
-            <p><a class="btn btn-primary btn-lg" href="vacancy" role="button">Post new Job &raquo;</a></p>
+            <form th:action="@{/seekers}" th:object="${skill}"  method="post" >
+                <input type="text" th:field="*{skills}" name="title" placeholder="By Title"/>
+                <button type="submit">Search</button>
+            </form>
+            <form th:action="@{/employerSeeker}" th:object="${job}"  method="post" >
+                <input type="text" th:field="*{employer}" name="title" placeholder="By Employer"/>
+                <button type="submit">Search</button>
+            </form> <p><a class="btn btn-primary btn-lg" href="vacancy" role="button">Post new Job &raquo;</a></p>
         </div>
     </div>
 </div>

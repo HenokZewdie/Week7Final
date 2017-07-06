@@ -37,6 +37,19 @@
                 <!--<td th:text = "${#dates.format(mylink.date, 'MMM-dd-yyyy')}"></td>  #dates.format(sprint.releaseDate, 'dd-MMM-yyyy')-->
             </tr>
         </div>
+        <div th:each="loopin : ${employerSeeker}">
+            <tr>
+                <td th:text = "${loopin.title}"></td>
+                <td th:text = "${loopin.employer}"></td>
+                <td th:text = "${loopin.salary}"></td>
+                <td th:text = "${loopin.description}"></td>
+                <td th:text = "${loopin.skills}"></td>
+                <td th:text = "${loopin.postedBy}"></td>
+                <td th:text = "${#dates.format(loopin.date, 'MMM-dd-yyyy')}"></td>
+
+                <!--<td th:text = "${#dates.format(mylink.date, 'MMM-dd-yyyy')}"></td>  #dates.format(sprint.releaseDate, 'dd-MMM-yyyy')-->
+            </tr>
+        </div>
 
     </table>
             <div class="col-xs-4">

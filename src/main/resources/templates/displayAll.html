@@ -16,7 +16,7 @@
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Email</th>
-                    <th>Registered Date</th>
+                    
 
                 </tr>
                 <div th:each="test : ${values}">
@@ -26,7 +26,7 @@
                         <td><p th:text = "${test.firstName}"></p></td>
                         <td th:text = "${test.lastName}"></td>
                         <td th:text = "${test.email}"></td>
-                        <td th:text = "${#dates.format(test.date, 'MMM-dd-yyyy')}"></td>
+
 
                     </tr>
                 </div>
