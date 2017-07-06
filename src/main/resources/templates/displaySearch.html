@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head th:replace="base :: Mena">
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron">
+
+        <nav class="navbar navbar-default" th:replace="base::navi"> </nav>
+
+        <table class="table table-hover">
+
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Member Type</th>
+
+            </tr>
+
+            <div th:each="loopin : ${newValue}">
+                <tr>
+                    <td><p th:text = "${loopin.firstName}"></p></td>
+                    <td th:text = "${loopin.lastName}"></td>
+                    <td th:text = "${loopin.email}" ></td>
+                    <td th:text = "${#dates.format(loopin.date, 'MMM-dd-yyyy')}"></td>
+
+                    <!--<td th:text = "${#dates.format(mylink.date, 'MMM-dd-yyyy')}"></td>  #dates.format(sprint.releaseDate, 'dd-MMM-yyyy')-->
+                </tr>
+            </div>
+
+            <div th:each="loopin : ${register1}">
+                <tr>
+                    <td th:text = "${loopin.firstName}"></td>
+                    <td th:text = "${loopin.lastName}"></td>
+                    <td th:text = "${loopin.email}"></td>
+                    <td th:text = "${loopin.userType}"></td>
+                    <!--<td th:text = "${#dates.format(mylink.date, 'MMM-dd-yyyy')}"></td>  #dates.format(sprint.releaseDate, 'dd-MMM-yyyy')-->
+                </tr>
+            </div>
+        </table>
+        <div class="col-xs-4">
+           <h5>Go back home/ Login again and Enjoy</h5>
+        </div>
+        <div class="col-xs-4">
+            <form action="/">
+                <button type="submit" class="btn btn-default">home</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

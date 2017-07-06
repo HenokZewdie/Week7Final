@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head th:replace="base::Mena">
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron">
+<nav class="navbar navbar-default" th:replace="base::navi"></nav>
+<form th:action="@{/search}" th:object="${person}"  method="post" >
+        <input type="text" th:field="*{firstName}" name="firstName" placeholder="By Name"/>
+        <button type="submit">Search</button>
+</form>
+
+        <form th:action="@{/searchAll}" th:object="${person}"  method="get" >
+            <input type="text" th:field="*{email}" name="email" placeholder="By Email"/>
+            <button type="submit">Search</button>
+        </form>
+
+        <form th:action="@{/searchrole}" th:object="${person}"  method="post" >
+            <input type="text" th:field="*{role}" name="role" placeholder="User or Recruiter"/>
+            <button type="submit">Search</button>
+        </form>
+   </div>
+</div>
+
+</body>
+</html>

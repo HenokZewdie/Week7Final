@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head th:replace="base :: Mena">
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron">
+
+        <nav class="navbar navbar-default" th:replace="base::navi"> </nav>
+
+        <table class="table table-hover">
+
+            <tr>
+                <th>Company Name</th>
+             </tr>
+
+            <div th:each="loopin : ${searchCompany}">
+                <tr>
+                    <td><p th:text = "${loopin.company}"></p></td>
+
+
+                    <!--<td th:text = "${#dates.format(mylink.date, 'MMM-dd-yyyy')}"></td>  #dates.format(sprint.releaseDate, 'dd-MMM-yyyy')-->
+                </tr>
+            </div>
+
+        </table>
+
+    </div>
+</div>
+</body>
+</html>

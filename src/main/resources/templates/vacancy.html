@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html     xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:th="www.thymeleaf.org"
+          xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Spring Security Example</title>
+    <th:block th:replace="base :: head"></th:block>
+</head>
+<body>
+<nav class="navbar navbar-default" th:replace="base::navi"></nav>
+<div class="container">
+    <br /><br /><br />
+    <h4>New Vacancy</h4>
+    <form action="#" th:action="@{/vacancy}" th:object="${job}" method="post">
+        <div class="form-group">
+            <label for="title">title </label>
+            <input type="text" class="form-control" id="title" placeholder="title" th:field="*{title}" />
+        </div>
+        <div class="form-group">
+            <label for="employer">employer</label>
+            <input type="text" class="form-control" id="employer" placeholder="employer" th:field="*{employer}" />
+        </div>
+        <div class="form-group">
+            <label for="salary">salary </label>
+            <input type="text" class="form-control" id="salary" placeholder="salary" th:field="*{salary}" />
+        </div>
+        <div class="form-group">
+            <label for="description">description </label>
+            <input type="text" class="form-control" id="description" placeholder="description" th:field="*{description}" />
+        </div>
+        <div class="form-group">
+            <label for="skills">skills </label>
+            <input type="text" class="form-control" id="skills" placeholder="skills" th:field="*{skills}" />
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+</div><!-- /.container -->
+<th:block th:replace="base :: footlinks"></th:block>
+</body>
+</html>
