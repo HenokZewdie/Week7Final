@@ -10,8 +10,8 @@
         <nav class="navbar navbar-default" th:replace="base::nav2"></nav>
         <div class="container">
             <h3>Only Visible for Recruiters</h3>
-            <form th:action="@{/seekers}" th:object="${skill}"  method="post" >
-                <input type="text" th:field="*{skills}" name="title" placeholder="By Title"/>
+            <form th:action="@{/skillseekers}" th:object="${skill}"  method="post" >
+                <input type="text" th:field="*{skills}" name="skills" placeholder="By Skill"/>
                 <button type="submit">Search</button>
             </form>
             <form th:action="@{/employerSeeker}" th:object="${job}"  method="post" >

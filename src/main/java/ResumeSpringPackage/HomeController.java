@@ -170,7 +170,27 @@ public class HomeController {
         }*/
         return "display";
     }
+    @RequestMapping(value = "/skillseekers", method = RequestMethod.GET)
+    public String skillseekerGet(Model model){
+        model.addAttribute("skill",new Skill());
+        return "skillseekers";
+    }
+    @RequestMapping(value = "skillseekers", method = RequestMethod.POST)
+    public String skillseekers( Model model, User user, Skill skill){
 
+        String searchSkill = skill.getSkills(); // get a skill search
+        skill = skillRepository.findBySkills(searchSkill); //store in the skill obj
+        emailSession = skill.getEmail();        // access the email from the obj
+        user = userRepository.findByEmail(emailSession);
+        Iterable<Education> Educvalues = educationRepository.findByEmail(emailSession);
+        Iterable<Experience> Expvalues = experienceRepository.findByEmail(emailSession);
+        Iterable<Skill> Skillvalues = skillRepository.findByEmail(emailSession);
+        model.addAttribute("values", user);
+        model.addAttribute("Educvalues", Educvalues);
+        model.addAttribute("Expvalues", Expvalues);
+        model.addAttribute("Skillvalues", Skillvalues);
+        return "displayAll";
+    }
     public UserValidator getUserValidator() {
         return userValidator;
     }

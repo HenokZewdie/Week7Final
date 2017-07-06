@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface SkillRepository extends CrudRepository<Skill, Integer> {
     List<Skill> findByEmail(String email);
+    Skill findBySkills(String skill);
 }
