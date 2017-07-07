@@ -1,9 +1,6 @@
 package ResumeSpringPackage;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -14,11 +11,17 @@ public class Job {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column(name = "title", nullable = false)
     private String title;
+    @Column(name = "employer")
     private String employer;
+    @Column(name = "salary")
     private double salary;
+    @Column(name = "description")
     private String description;
+    @Column(name = "skills")
     private String skills;
+
     private Date date;
     private String postedBy;
 

@@ -13,15 +13,9 @@
             <button type="submit">Search</button>
         </form>
         <form th:action="@{/employerSeeker}" th:object="${job}"  method="post" >
-            <input type="text" th:field="*{employer}" name="title" placeholder="By Employer"/>
+            <input type="text" th:field="*{employer}" name="employer" placeholder="By Employer"/>
             <button type="submit">Search</button>
         </form>
-<!--
-        <div class="col-xs-4">
-            <form action="/education">
-                <label>To Build your resume</label><button type="submit" class="btn btn-default">Build Profile</button>
-            </form>
-        </div>-->
     </div>
 </div>
 </body>

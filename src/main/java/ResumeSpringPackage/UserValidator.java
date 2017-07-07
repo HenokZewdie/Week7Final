@@ -18,11 +18,15 @@ public class UserValidator implements Validator {
         String email = user.getEmail();
         String username = user.getUsername();
         String password = user.getPassword();
+        String roleType = user.getUserType();
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstName", "user.firstName.empty");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "lastName", "user.lastName.empty");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "user.username.empty");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "user.email.empty");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "user.password.empty");
+        if(!(roleType.equalsIgnoreCase("seeker") || roleType.equalsIgnoreCase("recruiter"))){
+            errors.rejectValue("userType","user.userType.wrongRole");
+        }
         if(username.length() < 5){
             errors.rejectValue("username","user.username.tooShort");
         }

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org">
+<html     xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:th="http://www.thymeleaf.org"
+          xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head th:replace="base::head">
     <meta charset="UTF-8" />
     <title>Title</title>
@@ -10,14 +12,11 @@
         <nav class="navbar navbar-default" th:replace="base::nav2"></nav>
         <div class="container">
             <h3>Only Visible for Recruiters</h3>
-            <form th:action="@{/skillseekers}" th:object="${skill}"  method="post" >
-                <input type="text" th:field="*{skills}" name="skills" placeholder="By Skill"/>
+            <form th:action="@{/jobseeker}" th:object="${job}"  method="post" >
+                <input type="text" th:field="*{title}" name="title" placeholder="By Title"/>
                 <button type="submit">Search</button>
             </form>
-            <form th:action="@{/employerSeeker}" th:object="${job}"  method="post" >
-                <input type="text" th:field="*{employer}" name="title" placeholder="By Employer"/>
-                <button type="submit">Search</button>
-            </form> <p><a class="btn btn-primary btn-lg" href="vacancy" role="button">Post new Job &raquo;</a></p>
+            <p><a class="btn btn-primary btn-lg" href="vacancy" role="button">Post new Job &raquo;</a></p>
         </div>
     </div>
 </div>

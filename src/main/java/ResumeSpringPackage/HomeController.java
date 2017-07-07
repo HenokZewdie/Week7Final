@@ -63,7 +63,7 @@ public class HomeController {
         emailSession = user.getEmail();
         userValidator.validate(user, result);
         if (result.hasErrors()) {
-            return "registration";
+            return "register";
         } else {
             userService.saveUser(user);
             model.addAttribute("message", "User Account Successfully Created");
@@ -164,10 +164,6 @@ public class HomeController {
         System.out.println(searchtitle);
         Iterable<Job> iterateValue = jobRepository.findByEmployer(searchtitle);
         model.addAttribute("employerSeeker", iterateValue);
-        /*Iterator<Job> test = iterateValue.iterator();
-        while(test.hasNext()){
-            System.out.println(test.next().getEmployer());
-        }*/
         return "display";
     }
     @RequestMapping(value = "/skillseekers", method = RequestMethod.GET)
@@ -175,10 +171,11 @@ public class HomeController {
         model.addAttribute("skill",new Skill());
         return "skillseekers";
     }
-    @RequestMapping(value = "skillseekers", method = RequestMethod.POST)
-    public String skillseekers( Model model, User user, Skill skill){
+    @RequestMapping(value = "/skillseekers", method = RequestMethod.POST)
+    public String skillseekers( @ModelAttribute Skill skill, Model model, User user){
 
         String searchSkill = skill.getSkills(); // get a skill search
+        System.out.println("TEST POST " + searchSkill);
         skill = skillRepository.findBySkills(searchSkill); //store in the skill obj
         emailSession = skill.getEmail();        // access the email from the obj
         user = userRepository.findByEmail(emailSession);
@@ -198,3 +195,10 @@ public class HomeController {
         this.userValidator = userValidator;
     }
 }
+
+
+
+/*Iterator<Job> test = iterateValue.iterator();
+        while(test.hasNext()){
+            System.out.println(test.next().getEmployer());
+        }*/

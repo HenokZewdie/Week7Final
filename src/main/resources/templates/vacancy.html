@@ -16,8 +16,8 @@
     <h4>New Vacancy</h4>
     <form action="#" th:action="@{/vacancy}" th:object="${job}" method="post">
         <div class="form-group">
-            <label for="title">title </label>
-            <input type="text" class="form-control" id="title" placeholder="title" th:field="*{title}" />
+            <label for="title">title <mark><strong><span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">title Error</span></strong></mark></label>
+            <input type="text" class="form-control" id="title" placeholder="Last Name" th:field="*{title}" />
         </div>
         <div class="form-group">
             <label for="employer">employer</label>
